@@ -70,16 +70,17 @@ public class Prologue extends Act{
     System.out.println("And now, " + player.getName() + ", your story begins");
   }
 
-
-  public void loadingScreen(){
-    for (int i = 25; i <= 100; i += 25) {
-      try {
-        Thread.sleep(1000);
-      } catch (InterruptedException e) {
-          System.out.println("The thread was interrupted.");
-        } 
-        
-      System.out.println("Game Loading: " + i + "%");
-    }
-  }
+  @SuppressWarnings("BusyWait")
+  public void loadingScreen() {
+    new Thread(() -> {
+      for (int i = 25; i <= 100; i += 25) {
+        try {
+          Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            System.out.println("The thread was interrupted.");
+        }
+        System.out.println("Game Loading: " + i + "%");
+        }
+    }).start();
+}
 }

@@ -1,23 +1,22 @@
-import java.util.HashMap;
 
-public class Player {
-    private final String playerName;
-    private CharacterClass playerClass;
-    private HashMap<String, Integer> Attributes = new HashMap<>();
 
-    public Player(String playerName) {
-        this.playerName = playerName;
+public class Player extends Character {
+    private PlayerClass playerClass;
+
+    public Player(String name) {
+        this.name = name;
 		}
 
     public void setClass(int classNumber){
-        this.playerClass = CharacterClass.fromID(classNumber);
-        Attributes.put("HP", playerClass.getHP());
-        Attributes.put("Attack", playerClass.getAttack());
-        Attributes.put("Defence", playerClass.getDefence());
-        Attributes.put("Luck", playerClass.getLuck());
+        this.playerClass = PlayerClass.fromID(classNumber);
+        getAttributes().put("HP", playerClass.getClassHP());
+        getAttributes().put("Attack", playerClass.getClassAttack());
+        getAttributes().put("Defence", playerClass.getClassDefence());
+        getAttributes().put("Luck", playerClass.getClassLuck());
+
     }
   
-  public String getName(){return playerName;}
-  public CharacterClass getPlayerClass(){return playerClass; }
+  public PlayerClass getPlayerClass(){return playerClass; }
+
 }
   
