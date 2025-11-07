@@ -13,5 +13,5 @@ public abstract class Character {
     }
 
     public String getName() {return name; }
-    public HashMap<String, Integer> getAttributes(){return attributes;}
+    public HashMap<String, Integer> getAttributes() {return attributes; }
 }

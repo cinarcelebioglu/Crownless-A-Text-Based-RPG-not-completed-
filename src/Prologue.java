@@ -1,17 +1,15 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Prologue extends Act{
-  Scanner scanner = new Scanner(System.in);
-  Player player = null;                
+public class Prologue{
+  Scanner scanner = new Scanner(System.in);              
   int classNumber = 0;
   boolean validInput = false;
+  Player player;
 
-  @Override
   public void start(){
     intro();
     classSelection();
-    loadingScreen();
   }
 
   public void intro(){
@@ -68,19 +66,13 @@ public class Prologue extends Act{
 
     System.out.println("Class selected: " + player.getPlayerClass());
     System.out.println("And now, " + player.getName() + ", your story begins");
+    scanner.nextLine();
+    System.out.println("Press 'ENTER' to Continue");
+    scanner.nextLine();
   }
 
-  @SuppressWarnings("BusyWait")
-  public void loadingScreen() {
-    new Thread(() -> {
-      for (int i = 25; i <= 100; i += 25) {
-        try {
-          Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            System.out.println("The thread was interrupted.");
-        }
-        System.out.println("Game Loading: " + i + "%");
-        }
-    }).start();
-}
+
+  public Player getPlayer() {
+    return player;
+  }
 }
