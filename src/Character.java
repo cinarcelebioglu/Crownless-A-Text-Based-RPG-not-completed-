@@ -6,7 +6,9 @@ public abstract class Character {
     protected String name;
     private HashMap<String, Integer> attributes = new HashMap<>();
 
-    public Character() {}
+    public Character(String name) {
+        this.name = name;
+    }
 
     public boolean isAlive() {
         return attributes.get("Current HP") > 0;

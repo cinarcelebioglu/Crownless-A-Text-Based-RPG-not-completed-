@@ -1,6 +1,7 @@
 public class Enemy extends Character{
 
-    public Enemy(int hp, int attack, int defence, int luck) {
+    public Enemy(String name, int hp, int attack, int defence, int luck) {
+      super(name);
       getAttributes().put("HP", hp);
       getAttributes().put("Attack", attack);
       getAttributes().put("Defence", defence);

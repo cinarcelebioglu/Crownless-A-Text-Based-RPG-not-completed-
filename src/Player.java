@@ -4,7 +4,7 @@ public class Player extends Character {
     private PlayerClass playerClass;
 
     public Player(String name) {
-        this.name = name;
+        super(name);
 		}
 
     public void setClass(int classNumber){

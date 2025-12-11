@@ -12,7 +12,7 @@ public class Prologue{
     classSelection();
   }
 
-  public void intro(){
+  private void intro(){
     System.out.println("""
                       ********************************
                       Crownless, A Text-Based RPG Game
@@ -41,7 +41,7 @@ public class Prologue{
   }
 
 
-  public void classSelection(){
+  private void classSelection(){
     System.out.println("""
                     1: Warrior(Base Attack=1, Base Defence=3, Base Luck=2)
                     2: Archer(Base Attack=3, Base Defence=2, Base Luck=1)

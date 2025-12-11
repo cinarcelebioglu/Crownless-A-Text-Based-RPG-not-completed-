@@ -1,8 +1,9 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Act1 extends Act{
 	
-	private Player player;
+	private final Player player;
 	Scanner scanner = new Scanner(System.in);
 	
 	public Act1(Player player) {
@@ -36,16 +37,19 @@ public class Act1 extends Act{
 		2) Defend the man who curses at the crown.
 		
 		""");
-		
-		int decision = scanner.nextInt();
+		int decision;
+		while(true){
+			try{
+				decision = scanner.nextInt();
+				break;
+			} catch(InputMismatchException e) {
+					System.out.println("Invalid Input");
+			}
+		}
 		
 		switch(decision){
-			case 1:
-			defendTheCrown();
-			break;
-			case 2:
-			curseTheCrown();
-			break;
+			case 1 -> defendTheCrown();
+			case 2 -> curseTheCrown();
 		}
 	}
 	
@@ -72,6 +76,7 @@ public class Act1 extends Act{
 					  """);
 			Quest sneakingHome = new Quest("Sneaking into " + target + "'s home to retrieve some evidents that shows his guilt", 
 											"Bailiff");
+			System.out.println(sneakingHome);
 	}
 	
 	private void curseTheCrown(){
@@ -101,6 +106,37 @@ public class Act1 extends Act{
 	}
 	
 	private void sneakingIntoTargetsHome(){
+		System.out.println("""
+										You wait for the sun to set. Your heart is pounding like hell—this is the first time you’re doing something that 
+										could actually be called a crime. Even though your intentions are good, the thought still gnaws at you.
+										Fortunately, your target leaves his home exactly when he’s supposed to. He’s probably heading to the tavern. 
+										You search for a way in but find nothing, and while you’re still thinking, you notice someone turning into the alley.
+										It’s now or never.
+
+										Panicking, you break the window, hoping whoever is approaching didn’t hear it. You rummage 
+										through cabinets and chests and quickly find papers proving his guilt—unsurprisingly.
+
+										But when you turn around, you see a boy. A real child, trembling, holding a small sword 
+										that almost reaches up to his hair as he grips it. You assume he must be your target’s son. 
+										Wasn’t he supposed to be somewhere else? School, maybe?
+										He’s terrified of you, yet he’s trying to be the hero, of course.
+
+										He swings the sword at you, but you dodge it without effort. And now, you have no choice but to fight this little kid.    
+											""");
+										System.out.println("Press ENTER to Continue");
+										scanner.nextLine();
+										Enemy targetsChild = new Enemy("Bertran", 10, 1, 1, 1);
+										CombatSimulation combatWithChild = new CombatSimulation(player.getAttributes().get("HP"),
+																																						player.getAttributes().get("Attack"),
+																																						player.getAttributes().get("Luck"),
+																																						player.getAttributes().get("Defence"),
+																																						targetsChild.getAttributes().get("HP"),
+																																						targetsChild.getAttributes().get("Attack"),
+																																						targetsChild.getAttributes().get("Luck"),
+																																						targetsChild.getAttributes().get("Defence"));
+
+										combatWithChild.start();
 	}
+	
 	
 }

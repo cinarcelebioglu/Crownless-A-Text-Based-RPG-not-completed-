@@ -1,4 +1,4 @@
-public class GameStats {
+public abstract class GameStats {
   private static int crownAlignment;
 
   public static int getCrownAlignment(){
