@@ -1,3 +1,4 @@
+package dataholder;
 public enum PlayerClass {
 
   //Class ID, HP, Attack, Defence, Luck

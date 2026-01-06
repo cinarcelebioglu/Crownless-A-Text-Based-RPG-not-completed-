@@ -1,3 +1,4 @@
+package combat;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -20,9 +21,9 @@ public class CombatSimulation {
     public void start(){
       scanner = new Scanner(System.in);
       random = new Random();
+      int decision = 0;
       while(playerHP > 0 && opponentHP > 0 ){
         boolean bool = false;
-        int decision = 0;
         int turn = random.nextInt(2);
         if (turn == 1) {
           do{
@@ -33,14 +34,29 @@ public class CombatSimulation {
               bool = true;
             } catch(IllegalArgumentException e){System.out.println("Enter a valid response");}
           } while(!bool);
-          opponentHP = opponentHP - CombatSystem.playerAttacks(playerAttack, playerLuck, opponentDefence, decision);
+          if (decision == 2){opponentHP = opponentHP - CombatSystem.playerAttacks(playerAttack+1, playerLuck, opponentDefence);
+            decision = 0;
+          }
+          else {opponentHP = opponentHP - CombatSystem.playerAttacks(playerAttack, playerLuck, opponentDefence);
+          }
           System.out.println("Opponent's current HP: " + opponentHP);
           System.out.println("Press ENTER to Continue");
           scanner.nextLine();
           scanner.nextLine();
         }
         else {
-        playerHP = playerHP - CombatSystem.opponentAttacks(playerDefence, opponentAttack, opponentLuck, decision);
+          boolean criticalHit = random.nextBoolean();
+            switch (decision) {
+                case 1 -> {
+                    playerHP = playerHP - CombatSystem.opponentAttacks(playerDefence+1, opponentAttack, opponentLuck, criticalHit);
+                    decision = 0;
+                }
+                case 2 -> { 
+                    playerHP = playerHP - CombatSystem.opponentAttacks(playerDefence-1, opponentAttack, opponentLuck, criticalHit);
+                    decision = 0;
+                }
+                default -> playerHP = playerHP - CombatSystem.opponentAttacks(playerDefence, opponentAttack, opponentLuck, criticalHit);
+            }
         System.out.println("Your current HP: " + playerHP);
         System.out.println("Press ENTER to Continue");
         scanner.nextLine();
@@ -53,6 +69,7 @@ public class CombatSimulation {
       else {
         System.out.println("Try Again.");
         scanner.nextLine();
+        this.start();
       }
     }
   }

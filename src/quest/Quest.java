@@ -1,6 +1,7 @@
+package quest;
 public class Quest {
-  private String objective;
-  private String questGiver;
+  private final String objective;
+  private final String questGiver;
 
   public Quest(String objective, String questGiver){
     this.objective = objective;

@@ -1,3 +1,5 @@
+package acts;
+import characters.Player;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

@@ -1,3 +1,4 @@
+package dataholder;
 public abstract class GameStats {
   private static int crownAlignment;
 

@@ -1,3 +1,4 @@
+package characters;
 // Common class for both player and enemies
 
 import java.util.HashMap;
@@ -8,10 +9,6 @@ public abstract class Character {
 
     public Character(String name) {
         this.name = name;
-    }
-
-    public boolean isAlive() {
-        return attributes.get("Current HP") > 0;
     }
 
     public String getName() {return name; }

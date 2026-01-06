@@ -1,10 +1,10 @@
+package combat;
 
 public class CombatSystem {
   
-  public static double playerAttacks(int totalAttack, int totalLuck, int opponentsTotalDefence, int decision) {
+  public static double playerAttacks(int totalAttack, int totalLuck, int opponentsTotalDefence) {
     
     System.out.println("--ITS YOUR TURN--");
-    if (decision == 1 ) {totalAttack++;}
     double luckBonus = Math.random() * totalLuck;
     double damage = totalAttack + luckBonus - opponentsTotalDefence;
     promptDamage(luckBonus, damage, totalAttack, opponentsTotalDefence);
@@ -21,10 +21,14 @@ public class CombatSystem {
     else System.out.println("Total damage given = 0");
   }
   
-  public static double opponentAttacks(int totalDefence, int opponentsLuck, int opponentsAttack, int decision) {
+  public static double opponentAttacks(int totalDefence, int opponentsLuck, int opponentsAttack, boolean criticalHit) {
     
     System.out.println("--ITS YOUR OPPONENT'S TURN--");
-    if (decision == 2 ) {totalDefence++;}
+    System.out.println(criticalHit);
+    if (criticalHit) {
+      System.out.println("Critical Hit!");
+      opponentsAttack = opponentsAttack + 2;
+    }
     double luckBonus = Math.random() * opponentsLuck;
     double damage = opponentsAttack + luckBonus - totalDefence;
     promptDamageTaken(luckBonus, damage, opponentsAttack, totalDefence);

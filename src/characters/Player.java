@@ -1,4 +1,5 @@
-
+package characters;
+import dataholder.PlayerClass;
 
 public class Player extends Character {
     private PlayerClass playerClass;

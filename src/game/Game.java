@@ -1,8 +1,12 @@
+package game;
+import acts.Act1;
+import acts.Prologue;
+import characters.Player;
 
 public class Game {
   private Player player;
 
-  void start() {
+  public void start() {
       Prologue prologue = new Prologue();
       prologue.start();
       this.player = prologue.getPlayer();

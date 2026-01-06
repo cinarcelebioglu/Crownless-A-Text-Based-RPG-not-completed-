@@ -1,7 +1,13 @@
+package acts;
+import characters.Enemy;
+import characters.Player;
+import combat.CombatSimulation;
+import dataholder.GameStats;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import quest.Quest;
 
-public class Act1 extends Act{
+public class Act1{
 	
 	private final Player player;
 	Scanner scanner = new Scanner(System.in);
@@ -11,7 +17,6 @@ public class Act1 extends Act{
 	}
 	
 	
-	@Override
 	public void start(){
 		incidentInTavern();
 		sneakingIntoTargetsHome();
@@ -125,7 +130,7 @@ public class Act1 extends Act{
 											""");
 										System.out.println("Press ENTER to Continue");
 										scanner.nextLine();
-										Enemy targetsChild = new Enemy("Bertran", 10, 1, 1, 1);
+										Enemy targetsChild = new Enemy("Bertran", 30, 5, 5, 5);
 										CombatSimulation combatWithChild = new CombatSimulation(player.getAttributes().get("HP"),
 																																						player.getAttributes().get("Attack"),
 																																						player.getAttributes().get("Luck"),
